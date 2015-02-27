@@ -1,4 +1,6 @@
 class AuctionsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @auctions = Auction.all
   end
@@ -8,7 +10,7 @@ class AuctionsController < ApplicationController
   end
 
   def create
-    @auction = Auction.new auction_params
+    @auction = current_user.auctions.new auction_params
     if @auction.save
       redirect_to auction_path(@auction)
       flash[:notice] = "Auction created!"
@@ -36,6 +38,6 @@ class AuctionsController < ApplicationController
   private
 
   def auction_params
-    params.require(:auction).permit(:title, :details, :ends_on, :reserve_price)
+    params.require(:auction).permit(:title, :details, :ends_on, :reserve_price, :user_id)
   end
 end

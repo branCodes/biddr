@@ -1,8 +1,9 @@
 class BidsController < ApplicationController
+  before_action :authenticate_user!
   
   def new
-    @auction = Auction.find params[:id]
-    @bid = @auction.bids.new
+    auction = Auction.find params[:id]
+    @bid = current_user.auction.bids.new
   end
 
   def create
@@ -20,6 +21,6 @@ class BidsController < ApplicationController
   private
 
   def bid_params
-    params.require(:bid).permit(:bid_amount)
+    params.require(:bid).permit(:bid_amount, :user_id)
   end
 end
