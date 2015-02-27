@@ -8,7 +8,8 @@ class BidsController < ApplicationController
 
   def create
     @auction = Auction.find params[:auction_id]
-    @bid = @auction.bids.create(bid_params)
+    @bid = @auction.bids.new(bid_params)
+    @bid.user_id = current_user.id
     if @bid.save
       flash[:notice] = "Your bid has been placed!"
       redirect_to auction_path(@auction)

@@ -1,19 +1,21 @@
-<h1>Title: <%= @auction.title %></h1>
-<p>Details: <%= @auction.details %></p>
-<p>Sold By: <%= @auction.user.name %>
-<p>Auction Ends: <%= @auction.ends_on %></p>
+<h1><strong>Title:</strong> <%= @auction.title %></h1>
+<p><strong>Details:</strong> <%= @auction.details %></p>
+<p><strong>Sold By:</strong> <%= @auction.user.name %>
+<p><strong>Auction Ends:</strong> <%= @auction.ends_on %></p>
 <% if @auction.bids.length < 1 %>
   <p>No bids yet</p>
 <% else %>
-  <p>Current Price: <%= @auction.bids.last.bid_amount %> </p>
+  <p><strong>Current Price:</strong> <%= @auction.bids.last.bid_amount %> </p>
 <% end %>
-<p>Previous Bids:</p>
+<h2>Previous Bids:</h2>
 <% @auction.bids.each do |bid| %> 
+  <p><strong>Placed By:</strong> <%= bid.user.name %></p>
   <ul>
-    <li><%= bid.bid_amount %></li>
+    <li>$ <%= bid.bid_amount %></li>
   </ul>
 <% end %>
-  
+<hr>
+<h2>Place a Bid on <%= @auction.title %></h2> 
 <%= form_for(@bid, url: auction_bids_path(@auction)) do |f| %>
   <p>Amount: <%= f.number_field :bid_amount %></p>
   <%= f.submit "Save" %>
