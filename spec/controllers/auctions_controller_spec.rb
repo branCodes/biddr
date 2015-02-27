@@ -58,14 +58,14 @@ RSpec.describe AuctionsController, type: :controller do
 
   describe "#show" do
     it "assigns an auction instance variable with passed id" do
-      auction = Auction.create
-      get :show, id: auction.id
-      expect(assigns(:auction)).to eq(auction)
+      @auction = Auction.create(title:'lol')
+      get :show, id: @auction.id
+      expect(assigns(:auction)).to eq(@auction)
     end
 
     it "renders the show template" do
-      auction = Auction.create
-      get :show, id: auction.id
+      @auction = Auction.create(title:'lols')
+      get :show, id: @auction.id
       expect(response).to render_template(:show)
     end
   end
