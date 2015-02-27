@@ -69,4 +69,32 @@ RSpec.describe AuctionsController, type: :controller do
       expect(response).to render_template(:show)
     end
   end
+
+  describe "#index" do
+    it "renders the index template" do
+      get :index
+      expect(response).to render_template(:index)
+    end
+  end
+
+  describe "#edit" do
+    before do 
+      @auction = Auction.create(title:'loool')
+      get :edit, id: @auction.id
+    end
+
+    it "renders the edit template" do
+      expect(response).to render_template(:edit)
+    end
+  end
+
+  describe "#destroy" do
+    before do
+      @auction = Auction.create(title:'lol')
+    end
+
+    it "deletes an auction from the database" do
+      expect {delete :destroy, id: @]auction.id}.to change {Auction.count}.by(-1)
+    end
+  end
 end
