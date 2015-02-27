@@ -1,1 +1,10 @@
 <h1>Create New Auction</h1>
+
+<%= form_for @auction, url: {action: "create"} do |f| %>
+  <p>Title: <%= f.text_field :title %></p>
+  <p>Details: <%= f.text_area :details %></p>
+  <p>Ends On: <%= f.datetime_local_field :ends_on %></p>
+  <p>Reserve Price: <%= f.number_field :reserve_price %></p>
+  </p><%= f.submit "Save" %></p>
+<% end %>
+
