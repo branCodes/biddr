@@ -45,7 +45,7 @@ RSpec.describe AuctionsController, type: :controller do
                        }}
       end
       
-      it "adds an auction to the database" do
+      it "does not add an auction to the database" do
         expect {invalid_auction}.to change {Auction.count}.by(0)
       end
 

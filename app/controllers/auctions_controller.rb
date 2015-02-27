@@ -7,6 +7,8 @@ class AuctionsController < ApplicationController
     @auction = Auction.new auction_params
     if @auction.save
       flash[:notice] = "Auction created!"
+    else
+      flash[:alert] = "Error! Auction was not created"
     end
   end
 
@@ -14,7 +16,7 @@ class AuctionsController < ApplicationController
     @auction = Auction.find params[:id]
   end
 
-  
+
 
   private
 
