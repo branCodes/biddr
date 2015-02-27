@@ -1,0 +1,10 @@
+<h1>Title: <%= @auction.title %></h1>
+<p>Details: <%= @auction.details %></p>
+<p>Auction Ends: <%= @auction.ends_on %></p>
+<p>Current Price: </p>
+<p>Previous Bids: </p>
+
+<%= form_for(@bid, url: new_auction_bid_path(@auction)) do |f| %>
+  <p>Amount: <%= f.number_field :bid_amount %></p>
+  </p><%= f.submit "Save" %></p>
+<% end %>

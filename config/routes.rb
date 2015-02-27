@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
   root 'auctions#new'
-  resources :auctions
+  resources :auctions do
+    resources :bids
+  end
 end

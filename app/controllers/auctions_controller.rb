@@ -1,5 +1,6 @@
 class AuctionsController < ApplicationController
   def index
+    @auctions = Auction.all
   end
 
   def new
@@ -9,14 +10,17 @@ class AuctionsController < ApplicationController
   def create
     @auction = Auction.new auction_params
     if @auction.save
+      redirect_to auction_path(@auction)
       flash[:notice] = "Auction created!"
     else
+      redirect_to root_path
       flash[:alert] = "Error! Auction was not created"
     end
   end
 
   def show
     @auction = Auction.find params[:id]
+    @bid = Bid.new
   end
 
   def edit
