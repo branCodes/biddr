@@ -10,7 +10,7 @@
 <% if @auction.bids.length < 1 %>
   <p>No bids yet</p>
 <% else %>
-  <p><strong>Current Price:</strong> <%= @auction.bids.last.bid_amount %> </p>
+  <p><strong>Current Price:</strong> <%= @auction.current_bid %> </p>
 <% end %>
 <h2>Previous Bids:</h2>
 <% @auction.bids.each do |bid| %> 
