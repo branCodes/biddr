@@ -26,13 +26,27 @@ class AuctionsController < ApplicationController
   end
 
   def edit
+    @auction = Auction.find params[:id]
   end
 
   def update
+    @auction = Auction.find params[:id]
+    if @auction.update auction_params
+      redirect_to auction_path(@auction)
+    else 
+      render :edit
+    end
   end
 
   def destroy
-
+    @auction = Auction.find params[:id]
+    if @auction.destroy
+      redirect_to auctions_path
+      flash[:notice] = "Auction deleted!"
+    else
+      redirect_to auction_path(@auction)
+      flash[:alert] = "Error in deleting your auction"
+    end
   end
 
   private

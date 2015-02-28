@@ -19,6 +19,10 @@ class BidsController < ApplicationController
     end
   end
 
+  def user_bids
+    @bids = current_user.bids.all
+  end
+
   private
 
   def bid_params

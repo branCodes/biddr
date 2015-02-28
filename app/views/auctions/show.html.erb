@@ -2,6 +2,11 @@
 <p><strong>Details:</strong> <%= @auction.details %></p>
 <p><strong>Sold By:</strong> <%= @auction.user.name %>
 <p><strong>Auction Ends:</strong> <%= @auction.ends_on %></p>
+<% if @auction.user = current_user %>
+  <%= link_to 'Edit Auction', edit_auction_path(@auction) %>
+  <br>
+  <%= button_to 'Delete Auction', @auction, method: :delete %>
+<% end %>
 <% if @auction.bids.length < 1 %>
   <p>No bids yet</p>
 <% else %>
