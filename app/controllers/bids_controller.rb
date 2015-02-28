@@ -7,8 +7,7 @@ class BidsController < ApplicationController
   end
 
   def create
-    @auction = Auction.find params[:auction_id]
-    @lastbid = Bid.last 
+    @auction = Auction.find params[:auction_id] 
     @bid = @auction.bids.new(bid_params)
     @bid.user_id = current_user.id
     if @bid.bid_amount > @auction.current_bid
