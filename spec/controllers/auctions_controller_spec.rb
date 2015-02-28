@@ -21,7 +21,8 @@ RSpec.describe AuctionsController, type: :controller do
                           title: 'Valid Title',
                           detail: 'some valid deets',
                           ends_on: (Time.now + 10.days),
-                          reserve_price: 20
+                          reserve_price: 20,
+                          bid_amount: 0
                        }}
       end
       
@@ -41,7 +42,8 @@ RSpec.describe AuctionsController, type: :controller do
                           title: nil,
                           detail: 'some valid deets',
                           ends_on: (Time.now + 10.days),
-                          reserve_price: 20
+                          reserve_price: 20,
+                          bid_amount: nil
                        }}
       end
       
@@ -94,7 +96,7 @@ RSpec.describe AuctionsController, type: :controller do
     end
 
     it "deletes an auction from the database" do
-      expect {delete :destroy, id: @]auction.id}.to change {Auction.count}.by(-1)
+      expect {delete :destroy, id: @auction.id}.to change {Auction.count}.by(-1)
     end
   end
 end

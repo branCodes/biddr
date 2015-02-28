@@ -8,10 +8,6 @@
 <body>
 
 
-<div class="flash">
-  <%= flash[:alert] || flash[:notice] %>
-</div>
-
 <%= link_to 'All Auctions', auctions_path %>
 |
 <%= link_to 'Create an Auction', root_path %>
@@ -21,6 +17,11 @@
 <% else %>
   <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
 <% end %>
+<hr>
+<div class="flash">
+  <%= flash[:alert] || flash[:notice] %>
+</div>
+<hr>
 <div class="container">
   <%= yield %>
 </div>

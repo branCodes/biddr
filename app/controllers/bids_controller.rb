@@ -17,11 +17,11 @@ class BidsController < ApplicationController
         flash[:notice] = "Your bid has been placed!"
         redirect_to auction_path(@auction)
       else 
-        flash[:alert] = "Error in placing your bid"
+        flash[:alert] = "Error in placing your bid. Did you place a bid higher than the current price?"
         redirect_to auction_path(@auction)
       end
     else
-      flash[:alert] = "Error in placing your bid"
+      flash[:alert] = "Error in placing your bid. Did you place a bid higher than the current price?"
       redirect_to auction_path(@auction)
     end
   end
