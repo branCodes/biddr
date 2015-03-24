@@ -1,28 +1,45 @@
-== README
+#to get a D:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+TDD for CRUD to create the auction. 
 
-Things you may want to cover:
+TDD for creating a bid on an auction. 
 
-* Ruby version
+Validate that bid price must by higher than the current price. Set current price to highest bid.
+```
 
-* System dependencies
+```
+to get a C:
 
-* Configuration
+Add state machine with these states for the auction.: published / reserve met / won / canceled / reserve not met. Just enforce triggering going from published to reserve met for now.
 
-* Database creation
+Make current price go $1 above highest bid instead of making it the same as the highest bid
+```
 
-* Database initialization
+```
+to get a B:
 
-* How to run the test suite
+Add user authentication and disallow the person to bid on own auctions.
 
-* Services (job queues, cache servers, search engines, etc.)
+Display user's name beside their bid.
 
-* Deployment instructions
+Make a page to list all the bids that someone has made on all the auctions.
+```
 
-* ...
+```
+to get an A:
 
+Make bidding happen with AJAX. Make adding the bid to the listing fade in.
+```
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+```
+to get an A+:
+
+Add capybara tests for creating an auction and bidding (at least 2 each).
+```
+
+```
+to get an A++:
+
+Integrate with Stripe: Ask for card info the first time before being allowed to bid and store their token to charge them when auction end.
+```
