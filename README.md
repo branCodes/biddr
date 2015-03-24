@@ -19,7 +19,7 @@ Make current price go $1 above highest bid instead of making it the same as the 
 
 #to get a B:
 ```
-Add user authentication and disallow the person to bid on own auctions.
+Add user authentication and disallow the person to bid on own auctions. *create from scratch for bonus*
 
 Display user's name beside their bid.
 
